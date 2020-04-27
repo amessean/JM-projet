@@ -1,9 +1,9 @@
 Article.destroy_all
 
-# arthur = User.create!(
-#   email: "arthurrr@gmail.com",
-#   password: "arthurrr"
-#   )
+arthur = User.create!(
+  email: "arthurrr@gmail.com",
+  password: "arthurrr"
+  )
 
 Article1 = Article.create!(
   title: "Article1",
