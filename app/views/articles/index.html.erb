@@ -1,0 +1,11 @@
+<div><h1>Invest with Jean-Max</h1>
+</div>
+<div><%= link_to "Ajouter un article", new_article_path %>
+</div>
+<div>
+  <% @articles.each do |article| %>
+    <h2><%= article.title %></h2>
+    <h5><%= article.category %></h5>
+    <%= link_to "Lire l'article", article_path(article.id) %>
+  <% end %>
+</div>

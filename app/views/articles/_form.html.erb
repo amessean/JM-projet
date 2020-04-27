@@ -1,0 +1,6 @@
+<%= simple_form_for @article do |f| %>
+  <%= f.input :title, label: "Titre", placeholder: "Titre de l'article" %>
+    <%= f.input :content, label: "Texte", placeholder: "Texte de l'article" %>
+    <%= f.input :category, collection: Article::CATEGORY, :prompt => "Catégorie de l'article" %>
+    <%= f.button :submit %>
+ <% end %>
