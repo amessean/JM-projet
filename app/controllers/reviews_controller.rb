@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.article = @article
+    @article.id = @review.article_id
     @review.user = current_user
     @review.save
     redirect_to article_path(@article)
@@ -28,11 +28,11 @@ class ReviewsController < ApplicationController
   private
 
   def set_review
-    @article = Article.find(params[:id])
+    @article = Article.find(params[:article_id])
   end
 
   def review_params
-    params.require(:review).permit(:content, :title, :created_at, :article_id)
+    params.require(:review).permit(:content, :title, :created_at, :article_id, :user_id)
   end
 
 end

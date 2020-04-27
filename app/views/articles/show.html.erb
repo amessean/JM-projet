@@ -5,12 +5,3 @@
 <%= link_to "Supprimer #{@article.title}", article_path(@article), method: :delete, data: { confirm: "Êtes-vous sûr?" } %>
 <%= link_to 'Retour aux articles', articles_path %>
 <%= link_to "Ajouter un commentaire", new_article_review_path(@article) %>
-
-<% unless @article.reviews.count == 0 %>
-  <h6>Commentaires</h6>
-      <% @article.reviews.each do |review| %>
-        <p><%= review.title %></p>
-        <p><%= review.content %></p>
-        <p><%= link_to "Supprimer ce commentaire", article_review_path(review.id), method: :delete, data: { confirm: "Êtes-vous sûrs?" } %></p>
-      <% end %>
-<% end %>

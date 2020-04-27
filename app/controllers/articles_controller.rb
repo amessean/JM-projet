@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update]
 
   def index
     @articles = Article.all
@@ -31,6 +31,8 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    @article = Article.find(params[:id])
+    @article.user = current_user
     @article.destroy
     redirect_to articles_path
   end
@@ -42,6 +44,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :category)
+    params.require(:article).permit(:title, :content, :category, :user_id)
   end
 end
