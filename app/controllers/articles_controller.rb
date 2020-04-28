@@ -1,9 +1,8 @@
 class ArticlesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-  before_action :set_article, only: [:show, :edit, :update]
+  before_action :set_article, only: [ :show, :edit, :update]
 
   def index
-    # @articles = Article.all
     @articles = policy_scope(Article)
   end
 
@@ -17,7 +16,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.build(article_params)
-    authorize @article
+      authorize @article
     if @article.save
       redirect_to article_path(@article)
     else
@@ -45,7 +44,7 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
-    authorize @article
+      authorize @article
   end
 
   def article_params

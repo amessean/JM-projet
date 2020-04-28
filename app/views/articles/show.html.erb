@@ -1,10 +1,10 @@
 <%= @article.title %>
 <%= @article.category %>
 <%= @article.content %>
-<% if policy(@article).edit? %>
+<% if policy(@article).update? %>
 <%= link_to "Modifier l'article", edit_article_path(@article) %>
 <% end %>
-<% if policy(@article).edit? %>
+<% if policy(@article).destroy? %>
 <%= link_to "Supprimer #{@article.title}", article_path(@article), method: :delete, data: { confirm: "Êtes-vous sûr?" } %>
 <% end %>
 <%= link_to 'Retour aux articles', articles_path %>

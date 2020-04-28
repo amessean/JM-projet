@@ -10,20 +10,20 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user_is_admin?
   end
 
   def update?
-    user_is_owner?
+    user_is_admin?
   end
 
   def destroy?
-    user_is_owner?
+    user_is_admin?
   end
 
   private
 
-  def user_is_owner?
-    record.user == user
+  def user_is_admin?
+    user.try(:admin?)
   end
 end

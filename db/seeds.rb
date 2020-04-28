@@ -9,7 +9,7 @@ arthur = User.create!(
 jeanmax = User.create!(
   email: "jm@gmail.com",
   password: "jeanmax",
-  admin: false,
+  admin: true,
   )
 
 Article1 = Article.create!(
