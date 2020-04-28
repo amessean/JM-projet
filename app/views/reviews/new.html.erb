@@ -1,2 +1,7 @@
 <h3>Ajoute un commentaire</h3>
-<%= render "form", review: @review %>
+<%= simple_form_for ([@article, @review] ) do |f| %>
+  <%= f.input :title, label: "Titre", placeholder: "Titre du commentaire" %>
+  <%= f.input :content, label: "Commentaire", placeholder: "Ton commentaire" %>
+  <%= f.button :submit %>
+<% end %>
+<%= link_to "Retour à l'article", article_path(@article) %>
