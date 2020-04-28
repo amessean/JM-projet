@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:new, :create, :destroy]
+  before_action :set_review, only: [:new, :create]
 
   def new
     @review = Review.new
@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @article.id = @review.article_id
+    @review.article = @article
     @review.user = current_user
     @review.save
     redirect_to article_path(@article)
@@ -20,6 +20,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find(params[:article_id])
     article = @review.article
     @review.destroy
     redirect_to article_path
@@ -32,7 +33,7 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content, :title, :created_at, :article_id, :user_id)
+    params.require(:review).permit(:content, :title, :created_at, :user_id, :article_id)
   end
 
 end
