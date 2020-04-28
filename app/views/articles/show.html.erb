@@ -10,7 +10,9 @@
 <% unless @article.reviews.count == 0 %>
   <h6>Commentaires</h6>
       <% @article.reviews.each do |review| %>
+        <p><%= review.user.email %></p>
         <p><%= review.title %></p>
+        <p><%= review.created_at.strftime("%d-%m-%Y") %></p>
         <p><%= review.content %></p>
         <p><%= link_to "Supprimer ce commentaire", article_review_path(review.id), method: :delete, data: { confirm: "Êtes-vous sûrs?" } %></p>
       <% end %>
