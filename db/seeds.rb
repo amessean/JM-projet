@@ -2,7 +2,14 @@ Article.destroy_all
 
 arthur = User.create!(
   email: "arthurrr@gmail.com",
-  password: "arthurrr"
+  password: "arthurrr",
+  admin: false,
+  )
+
+jeanmax = User.create!(
+  email: "jm@gmail.com",
+  password: "jeanmax",
+  admin: false,
   )
 
 Article1 = Article.create!(

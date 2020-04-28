@@ -3,7 +3,8 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update]
 
   def index
-    @articles = Article.all
+    # @articles = Article.all
+    @articles = policy_scope(Article)
   end
 
   def show
@@ -11,11 +12,12 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+      authorize @article
   end
 
   def create
-    @article = Article.new(article_params)
-    @article.user = current_user
+    @article = current_user.articles.build(article_params)
+    authorize @article
     if @article.save
       redirect_to article_path(@article)
     else
@@ -35,6 +37,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.user = current_user
     @article.destroy
+      authorize @article
     redirect_to articles_path
   end
 
@@ -42,6 +45,7 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+    authorize @article
   end
 
   def article_params
