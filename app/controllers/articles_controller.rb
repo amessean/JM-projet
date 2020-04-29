@@ -3,7 +3,16 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [ :show, :edit, :update]
 
   def index
-    @articles = policy_scope(Article)
+    if params[:query].present?
+      sql_query = " \
+        articles.title ILIKE :query \
+        OR articles.content ILIKE :query \
+        OR articles.category ILIKE :query \
+      "
+      @articles = policy_scope(Article.where(sql_query, query: "%#{params[:query]}%"))
+    else
+      @articles = policy_scope(Article)
+    end
   end
 
   def show
@@ -35,8 +44,8 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.user = current_user
-    @article.destroy
       authorize @article
+    @article.destroy
     redirect_to articles_path
   end
 

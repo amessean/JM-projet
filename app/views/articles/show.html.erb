@@ -18,7 +18,11 @@
         <p><%= review.title %></p>
         <p><%= review.created_at.strftime("%d-%m-%Y") %></p>
         <p><%= review.content %></p>
+        <% if policy(review).destroy? %>
         <p><%= link_to "Supprimer ce commentaire", review_path(review.id), method: :delete, data: { confirm: "Êtes-vous sûrs?" } %></p>
+        <% end %>
+        <% if policy(review).update? %>
         <%= link_to "Modifier le commentaire", edit_review_path(review.id) %>
+        <% end %>
       <% end %>
 <% end %>

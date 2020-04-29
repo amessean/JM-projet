@@ -20,6 +20,6 @@ class ReviewPolicy < ApplicationPolicy
   private
 
   def user_is_owner_or_admin?
-    user.try(:admin?)
+    user.try(:admin?) || record.user == user
   end
 end

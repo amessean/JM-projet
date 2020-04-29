@@ -1,6 +1,15 @@
 <div><h1>Invest with Jean-Max</h1>
 </div>
 <div>
+<%= form_tag articles_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Recherches un article"%>
+    <%= submit_tag "Go", class: "search-btn" %>
+      <% end %>
+</div>
+<div>
   <% @articles.each do |article| %>
     <h2><%= article.title %></h2>
     <h5><%= article.category %></h5>
