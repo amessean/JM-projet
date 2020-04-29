@@ -12,17 +12,16 @@
 
 
 <% unless @article.reviews.count == 0 %>
-  <h6>Commentaires</h6>
+  <h2>Commentaires</h2>
       <% @article.reviews.each do |review| %>
-        <p><%= review.user.email %></p>
-        <p><%= review.title %></p>
-        <p><%= review.created_at.strftime("%d-%m-%Y") %></p>
+        <h3><%= review.title %></h3>
         <p><%= review.content %></p>
-        <% if policy(review).destroy? %>
-        <p><%= link_to "Supprimer ce commentaire", review_path(review.id), method: :delete, data: { confirm: "Êtes-vous sûrs?" } %></p>
-        <% end %>
+        <p>Commenté le <%= review.created_at.strftime("%d-%m-%Y") %> par <%= review.user.email %></p>
         <% if policy(review).update? %>
         <%= link_to "Modifier le commentaire", edit_review_path(review.id) %>
+        <% end %>
+        <% if policy(review).destroy? %>
+        <p><%= link_to "Supprimer ce commentaire", review_path(review.id), method: :delete, data: { confirm: "Êtes-vous sûrs?" } %></p>
         <% end %>
       <% end %>
 <% end %>
