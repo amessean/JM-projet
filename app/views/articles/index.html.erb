@@ -1,18 +1,49 @@
-<div><h1>Invest with Jean-Max</h1>
-</div>
-<div>
-<%= form_tag articles_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Recherches un article"%>
-    <%= submit_tag "Go", class: "search-btn" %>
+<div class="container">
+    <div class="basic-search">
+      <%= form_tag articles_path, method: :get do %>
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Recherche un article"%>
+      <%= submit_tag "Go", class: "search-btn" %>
       <% end %>
-</div>
-<div>
-  <% @articles.each do |article| %>
-    <h2><%= article.title %></h2>
-    <h5><%= article.category %></h5>
-    <%= link_to "Lire l'article", article_path(article.id) %>
-  <% end %>
+    </div>
+    <div>
+     <% @articles.each do |article| %>
+      <div class="card-product">
+          <% if article.category == "Immobilier" %>
+          <%= link_to image_tag("immobilier.jpg"), article_path(article.id) %>
+       <div class="card-product-infos">
+        <h2><%= article.title %></h2>
+        <p><%= article.category %></p>
+        <p>Crée le <%= article.created_at.strftime("%d-%m-%Y") %></p>
+        </div>
+        <% elsif article.category == "Crypto"  %>
+          <%= link_to image_tag("crypto.jpg"), article_path(article.id) %>
+           <div class="card-product-infos">
+        <h2><%= article.title %></h2>
+        <p><%= article.category %></p>
+        <p>Crée le <%= article.created_at.strftime("%d-%m-%Y") %></p>
+        </div>
+         <% elsif article.category == "Bourse"  %>
+          <%= link_to image_tag("stock.jpg"), article_path(article.id) %>
+           <div class="card-product-infos">
+        <h2><%= article.title %></h2>
+        <p><%= article.category %></p>
+        <p>Crée le <%= article.created_at.strftime("%d-%m-%Y") %></p>
+      </div>
+        <% else %>
+          <%= link_to image_tag("savings.jpg"), article_path(article.id) %>
+           <div class="card-product-infos">
+        <h2><%= article.title %></h2>
+        <p><%= article.category %></p>
+        <p>Crée le <%= article.created_at.strftime("%d-%m-%Y") %></p>
+      </div>
+        <% end %>
+            </div>
+      <% end %>
+
+  </div>
+    </div>
+
 </div>
