@@ -4,36 +4,35 @@
       <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          placeholder: "Recherche un article"%>
-      <%= submit_tag "Go", class: "search-btn" %>
+          placeholder: "Rechercher un article"%>
+      <%= submit_tag "Go", class: "submit-btn" %>
       <% end %>
     </div>
-    <div>
      <% @articles.each do |article| %>
       <div class="card-product">
-          <% if article.category == "Immobilier" %>
-          <%= link_to image_tag("immobilier.jpg"), article_path(article.id) %>
-       <div class="card-product-infos">
-        <h2><%= article.title %></h2>
-        <p><%= article.category %></p>
-        <p>Crée le <%= article.created_at.strftime("%d-%m-%Y") %></p>
-        </div>
-        <% elsif article.category == "Crypto"  %>
-          <%= link_to image_tag("crypto.jpg"), article_path(article.id) %>
-           <div class="card-product-infos">
-        <h2><%= article.title %></h2>
-        <p><%= article.category %></p>
-        <p>Crée le <%= article.created_at.strftime("%d-%m-%Y") %></p>
-        </div>
-         <% elsif article.category == "Bourse"  %>
-          <%= link_to image_tag("stock.jpg"), article_path(article.id) %>
-           <div class="card-product-infos">
-        <h2><%= article.title %></h2>
-        <p><%= article.category %></p>
-        <p>Crée le <%= article.created_at.strftime("%d-%m-%Y") %></p>
-      </div>
-        <% else %>
-          <%= link_to image_tag("savings.jpg"), article_path(article.id) %>
+         <% if article.category == "Immobilier" %>
+            <%= link_to image_tag("immobilier.jpg"), article_path(article.id) %>
+          <div class="card-product-infos">
+            <h2><%= article.title %></h2>
+            <p><%= article.category %></p>
+            <p>Crée le <%= article.created_at.strftime("%d-%m-%Y") %></p>
+          </div>
+        <% elsif article.category == "Cryptomonnaie" %>
+            <%= link_to image_tag("crypto.jpg"), article_path(article.id) %>
+          <div class="card-product-infos">
+            <h2><%= article.title %></h2>
+            <p><%= article.category %></p>
+            <p>Crée le <%= article.created_at.strftime("%d-%m-%Y") %></p>
+          </div>
+            <% elsif article.category == "Bourse" %>
+                <%= link_to image_tag("stock.jpg"), article_path(article.id) %>
+              <div class="card-product-infos">
+                <h2><%= article.title %></h2>
+                <p><%= article.category %></p>
+                <p>Crée le <%= article.created_at.strftime("%d-%m-%Y") %></p>
+              </div>
+            <% else %>
+              <%= link_to image_tag("savings.jpg"), article_path(article.id) %>
            <div class="card-product-infos">
         <h2><%= article.title %></h2>
         <p><%= article.category %></p>
@@ -42,8 +41,4 @@
         <% end %>
             </div>
       <% end %>
-
-  </div>
-    </div>
-
 </div>
