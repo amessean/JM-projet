@@ -1,27 +1,51 @@
-<%= @article.title %>
-<%= @article.category %>
-<%= @article.content %>
-<% if policy(@article).update? %>
-<%= link_to "Modifier l'article", edit_article_path(@article) %>
-<% end %>
-<% if policy(@article).destroy? %>
-<%= link_to "Supprimer #{@article.title}", article_path(@article), method: :delete, data: { confirm: "Êtes-vous sûr?" } %>
-<% end %>
-<%= link_to 'Retour aux articles', articles_path %>
-<%= link_to "Ajouter un commentaire", new_article_review_path(@article) %>
+<div class="container">
+  <h2><%= @article.title %></h2>
+    <div class="comment">
+      <div class="text">
+        <%= @article.content %>
+      </div>
+    </div>
+    <%= link_to articles_path, class: "back-btn" do %>
+      <i class="far fa-arrow-alt-circle-left"></i>
+    <% end %>
+    <%= link_to new_article_review_path(@article), class: "comment-btn" do %>
+      <i class="fas fa-comments"></i>
+    <% end %>
+    <% if policy(@article).update? %>
+      <%= link_to edit_article_path(@article), class: "comment-btn" do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
+    <% end %>
+    <% if policy(@article).destroy? %>
+      <%= link_to article_path(@article), method: :delete, data: { confirm: "Êtes-vous sûr?" } do %>
+        <i class="fas fa-trash comment-btn"></i>
+      <% end %>
+    <% end %>
 
-
-<% unless @article.reviews.count == 0 %>
+<div class="comments">
+ <% unless @article.reviews.count == 0 %>
   <h2>Commentaires</h2>
-      <% @article.reviews.each do |review| %>
-        <h3><%= review.title %></h3>
-        <p><%= review.content %></p>
-        <p>Commenté le <%= review.created_at.strftime("%d-%m-%Y") %> par <%= review.user.email %></p>
+    <% @article.reviews.each do |review| %>
+      <h4 class="title"><%= review.title %></h4>
+        <div class="comment">
+          <div class="text">
+            <%= review.content %>
+          </div>
+          <div class="author">
+            Commenté le <%= review.created_at.strftime("%d-%m-%Y") %> par <%= review.user.email %>
+          </div>
+        </div>
         <% if policy(review).update? %>
-        <%= link_to "Modifier le commentaire", edit_review_path(review.id) %>
+          <%= link_to edit_review_path(review), class: "comment-btn" do %>
+          <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
         <% if policy(review).destroy? %>
-        <p><%= link_to "Supprimer ce commentaire", review_path(review.id), method: :delete, data: { confirm: "Êtes-vous sûrs?" } %></p>
+          <%= link_to review_path(review.id), method: :delete, data: { confirm: "Êtes-vous sûr?" } do %>
+            <i class="fas fa-trash comment-btn"></i>
+          <% end %>
         <% end %>
-      <% end %>
-<% end %>
+    <% end %>
+   <% end %>
+</div>
+</div>

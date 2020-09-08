@@ -25,6 +25,14 @@
   margin: 0;
 }
 
+.card-product h3 {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
 .card-product p {
   font-size: 12px;
   line-height: 1.4;
@@ -34,7 +42,12 @@
 }
 
 .card-product .card-product-infos {
+  width: 1010px;
+  height: 120px;
   padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .basic-search {
