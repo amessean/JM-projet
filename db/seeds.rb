@@ -30,9 +30,4 @@ Article3 = Article.create!(
   content: "blablabla"
 )
 
-Article4 = Article.create!(
-  title: "Article4",
-  category: ["Bourse", "Crypto", "Epargne", "Immobilier"].sample,
-  content: "blablabla"
-)
 puts "Done!"
