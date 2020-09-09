@@ -60,19 +60,3 @@
 .form-control {
   border: none;
 }
-
-.submit-btn {
-  background-color: #CCCCCC;
-  color: $white;
-  text-transform: uppercase;
-  font-size: 14px;
-  max-height: 30px;
-  min-height: 30px;
-  width: 130px;
-  border: none;
-  border-radius: 0;
-  margin-bottom: 36px;
-  &:hover {
-    background-color: $gray;
-  }
-}

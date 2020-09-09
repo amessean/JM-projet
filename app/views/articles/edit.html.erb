@@ -1,5 +1,8 @@
 <div class="container">
- <%= render "form", article: @article %>
+  <div class="form-create">
+    <h3>Modifie ton article</h3>
+    <%= render "form", article: @article %>
   <%= link_to "Retour à l'article", article_path %>
+  </div>
 </div>
 
