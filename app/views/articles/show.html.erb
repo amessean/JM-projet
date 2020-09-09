@@ -2,7 +2,7 @@
   <h2><%= @article.title %></h2>
     <div class="comment">
       <div class="text">
-        <%= @article.content %>
+        <%= @article.rich_body %>
       </div>
     </div>
     <%= link_to articles_path, class: "back-btn" do %>
