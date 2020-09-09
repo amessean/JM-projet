@@ -1,5 +1,7 @@
-.about {
-  background-color: white;
+.about-text {
+  background-color: #666666;
+  color: white;
+  font-weight: 1000;
   padding-top: 40px;
   padding-bottom: 40px;
   padding-left: 20px;
@@ -9,4 +11,19 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-align: justify;
   text-justify: inter-word;
+  width: 600px;
+}
+
+.about-title {
+  font-weight: bold;
+}
+
+.about {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.about-image {
+  width: 300px;
 }

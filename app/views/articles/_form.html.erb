@@ -1,9 +1,6 @@
-<div class="container">
-  <%= simple_form_for @article do |f| %>
+<%= simple_form_for @article do |f| %>
   <%= f.input :title, label: "Titre", placeholder: "Titre de l'article" %>
-    <%= f.rich_text_area :rich_body, label: "Texte", placeholder: "Texte de l'article" %>
-    <%= f.input :category, label: "Catégorie", collection: Article::CATEGORY, :prompt => "Catégorie de l'article" %>
-    <%= f.button :submit, "Créer", class: 'btn btn-secondary' %>
- <% end %>
-</div>
-
+  <%= f.rich_text_area :rich_body, label: "Texte", placeholder: "Texte de l'article" %>
+  <%= f.input :category, label: "Catégorie", collection: Article::CATEGORY, :prompt => "Catégorie de l'article" %>
+  <%= f.button :submit, "Créer", class: 'btn btn-secondary' %>
+<% end %>
