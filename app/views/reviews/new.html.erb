@@ -1,8 +1,11 @@
 <div class="container">
   <h3>Ajoute un commentaire</h3>
-  <%= render "form", review: @review %>
-  <%= link_to article_path(@article.id), class: "back-btn" do %>
-      <i class="far fa-arrow-alt-circle-left"></i>
+  <div class="form-create">
+    <%= render "form", review: @review %>
+    <%= link_to article_path(@article.id), class: "back-btn" do %>
+    <i class="far fa-arrow-alt-circle-left"></i>
     <% end %>
+  </div>
+
 </div>
 

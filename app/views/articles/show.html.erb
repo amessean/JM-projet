@@ -1,9 +1,7 @@
 <div class="container">
   <h2><%= @article.title %></h2>
-    <div class="comment">
-      <div class="text">
+    <div class="body-text">
         <%= @article.rich_body %>
-      </div>
     </div>
     <%= link_to articles_path, class: "back-btn" do %>
       <i class="far fa-arrow-alt-circle-left"></i>
