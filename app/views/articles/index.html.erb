@@ -20,9 +20,6 @@
               <h2><%= article.title %></h2>
               <h3><%= article.category %></h3>
             </div>
-            <div>
-             <p><%= article.created_at.strftime("%d-%m-%Y") %></p>
-            </div>
           </div>
         <% elsif article.category == "Cryptomonnaie" %>
             <%= link_to image_tag("crypto.jpg"), article_path(article.id) %>
@@ -30,9 +27,6 @@
             <div>
               <h2><%= article.title %></h2>
               <h3><%= article.category %></h3>
-            </div>
-            <div>
-             <p><%= article.created_at.strftime("%d-%m-%Y") %></p>
             </div>
           </div>
             <% elsif article.category == "Bourse" %>
@@ -42,9 +36,6 @@
               <h2><%= article.title %></h2>
               <h3><%= article.category %></h3>
             </div>
-            <div>
-             <p><%= article.created_at.strftime("%d-%m-%Y") %></p>
-            </div>
           </div>
             <% else %>
               <%= link_to image_tag("savings.jpg"), article_path(article.id) %>
@@ -52,9 +43,6 @@
             <div>
               <h2><%= article.title %></h2>
               <h3><%= article.category %></h3>
-            </div>
-            <div>
-             <p><%= article.created_at.strftime("%d-%m-%Y") %></p>
             </div>
           </div>
         <% end %>
